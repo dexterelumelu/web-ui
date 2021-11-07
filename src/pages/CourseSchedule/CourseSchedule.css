@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.drawer-open {
+  position: fixed;
+  top: 0;
+  right: 10px;
+  font-size: 30px;
+  color: antiquewhite;
+  cursor: pointer;
+  z-index: 35;
+}
+
+.drawer-container {
+  height: 100vh;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: black;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  transition: 0.5s;
+  padding-top: 0;
+  z-index: 40;
+}
+
+.drawer-container a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.drawer-container a:hover {
+  color: #f1f1f1;
+}
+
+.drawer-container .close-button {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.semester-schedule-container{
+  display: grid;
+  width: 100vw;
+  height: 100%;
+  grid-template-rows: 1fr 100%;
+  grid-template-columns: 30% 70%;
+}
+
+.header{
+  background-color: black;
+  padding: 10px;
+}
+
+.navbar-container{
+  grid-area: heading;
+  grid-column: 1/-1;
+  grid-row: 1;
+}
+
+.navbar-container ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+}
+
+.navbar-container li{
+  float: left;
+}
+
+.navbar-container li a{
+  display: block;
+  color: white;
+  text-align: center;
+  /*padding: 14px 16px;*/
+  text-decoration: none;
+}
+
+.navbar-container a:hover:not(.active) {
+  background-color: pink;
+}
+
+.navbar-container .active {
+  background-color: darkred;
+}
+
+.sidebar-container {
+  width: 100%;
+  height: 100%;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.event-table-container{
+  grid-column: 2;
+  grid-row: 2;
+}
+

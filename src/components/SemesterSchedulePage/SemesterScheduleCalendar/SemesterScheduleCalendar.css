@@ -1,0 +1,93 @@
+/*
+  calendar-container
+    calendar-header
+      weekday-headers
+        blank-column
+        weekday-column
+        weekday-column
+        weekday-column
+        weekday-column
+        weekday-column
+    calendar-body
+      weekday-content
+        time-labels
+        monday-column
+        tueday-column
+        wednesday-column
+        thursday-column
+        friday-column
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+.calendar-container {
+  display: grid;
+  height: 100vh;
+  width: 100%;
+  z-index: 8;
+  grid-template-columns: auto;
+  grid-template-rows: 3vh 97vh;
+  grid-template-areas: 'headerRow'
+                        'contentRow';
+  
+}
+
+
+.calendar-header{
+  grid-area: headerRow;
+  background-color: silver;
+}
+
+.weekday-headers{
+  display: grid;
+  grid-template-columns: 1fr repeat(6, 3fr);
+  text-align: center;
+}
+
+
+.weekday-column {
+  align-items: center;
+}
+
+.calendar-body{
+  border: 1px solid black;
+  zoom: 60%;
+  border-radius: 1pt solid green;
+  grid-area: contentRow;
+  background-color: slategrey;
+  overflow-y: scroll;
+}
+
+.weekday-content{
+  display: grid;
+  grid-template-columns: 1fr repeat(6, 3fr);
+  grid-template-rows: repeat(181, 1fr);
+  overflow-y: scroll;
+}
+
+.hour-borders{
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  z-index: 11;
+}
+
+.time-labels{
+  grid-column: 1;
+  /*z-index: 5;*/
+}
+
+
+
+.item-column-hover {
+  background-color: red;
+  opacity: 0.1;
+  z-index: 10;
+}
+
+.item-column-add {
+  background-color: darkred;
+  z-index: 8;
+}
+
