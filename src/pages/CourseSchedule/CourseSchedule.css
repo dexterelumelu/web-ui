@@ -46,12 +46,13 @@ html, body {
 }
 
 .drawer-container .close-button {
-  position: absolute;
   top: 0;
-  right: 25px;
+  right: 0;
   font-size: 36px;
-  margin-left: 50px;
+  margin-left: 0;
 }
+
+
 
 .semester-schedule-container{
   display: grid;

@@ -4,11 +4,13 @@ import Checkbox from '@mui/material/Checkbox';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ListItemButton from '@mui/material/ListItemButton';
 import IconButton from '@mui/material/IconButton';
+import crnData from 'services/data/springCRN.json';
 
 import './Drawer.css'
 
 function Drawer({ callbackRemoveSection, classScheduleList }) {
   // const drawerList = {...classScheduleList}
+
 
 
   const closeDrawer = () => {
@@ -21,24 +23,29 @@ function Drawer({ callbackRemoveSection, classScheduleList }) {
   }
 
   return(
-    <div className='drawer-menu'>
+    <>
       <div className='drawer-header'>
         <div className='close-button' id='drawer-header' onClick={closeDrawer}>
           &times;
         </div>
       </div>
       <div className='drawer-body'>
-        {classScheduleList.map((crn) => (
-          <ListItemButton color='black' >
-            {crn}
-            <button onClick={() => {updateList(crn)}}>
-              &times;
-            </button>
-          </ListItemButton>
-        ))
+        {classScheduleList.map((crn) => {
+          if(!(crn in crnData)){
+            return(<></>)
+          }
+          return(
+            <ListItemButton color='black' >
+              {crnData[crn]['title']} {crnData[crn]['subject']} {crnData[crn]['number']}  .
+              <button onClick={() => {updateList(crn)}}>
+                &times;
+              </button>
+            </ListItemButton>
+          )}
+        )
         }
       </div>
-    </div>
+    </>
   )
 }
 

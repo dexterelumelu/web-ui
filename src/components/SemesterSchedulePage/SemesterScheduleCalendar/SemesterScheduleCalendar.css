@@ -63,7 +63,6 @@
   display: grid;
   grid-template-columns: 1fr repeat(6, 3fr);
   grid-template-rows: repeat(181, 0.54vh);
-  overflow-y: scroll;
 }
 
 .hour-borders{
