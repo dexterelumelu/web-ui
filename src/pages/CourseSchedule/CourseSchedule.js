@@ -55,11 +55,7 @@ function CourseSchedule() {
         <div className='semester-schedule-container'>
           <div className='navbar-container'>
             <ul>
-              <li><a class="active" href="#home">Home</a></li>
-              <li><a href="#news">{lastSectionAdded}</a></li>
-              <li><a href="#news">{classScheduleList.length}</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="#about">&#9776;</a></li>
+              <li><a class="active" href="#HOME">SPRING 2022 PLANNER</a></li>
             </ul>
           </div>
           <div className='sidebar-container'>

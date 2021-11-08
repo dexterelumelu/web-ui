@@ -156,13 +156,11 @@ function SemesterSideBar({ callbackHoverSection, callbackAddSection }) {
     <>
       <div className='sidebar-wrapper'>
         <div className='card-header'>
-          <Tabs value={pageRank} indicatorColor='secondary' textColor='white' centered>
-            <Tab label='<' onClick={onBackClick} />
-            <Tab label='subject' />
-            <Tab label='course' />
-            <Tab label='section' />
-            <Tab label={<RestartAltIcon />} onClick={onResetClick} />
-          </Tabs>
+            <button className='card-header-button' onClick={onBackClick}>&lt;</button>
+            <button className='card-header-tab1'>SUBJECT</button>
+            <button className='card-header-tab2'>COURSE</button>
+            <button className='card-header-tab3'>SECTION</button>
+            <button className='card-header-button' onClick={onResetClick}>&#8635;</button>
         </div>
         <div className='card-body'>
           {/*<Box sx={{ height:'100%', width: '100%', typography: 'body1', bgcolor: 'pink' }}>*/}

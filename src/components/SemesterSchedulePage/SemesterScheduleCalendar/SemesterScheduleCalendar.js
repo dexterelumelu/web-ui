@@ -34,7 +34,7 @@ const parseClassScheduleList = (crn) => {
           start: startTime,
           end: endTime
         }
-        dayList.push(<div className='item-column-add' style={{ gridRowStart: dayDiv.start, gridRowEnd: dayDiv.end, gridColumn: dayDiv.column }}></div>)
+        dayList.push(<div className='item-column-add' style={{ gridRowStart: dayDiv.start, gridRowEnd: dayDiv.end, gridColumn: dayDiv.column }}>{section['title']}</div>)
       }
     }
     // array, for each day of a section

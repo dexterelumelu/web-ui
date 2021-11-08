@@ -1,6 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'App.css';
+import './App.css';
 import data from 'services/data/fallSchedule.json';
 import { yearConstants } from "services/data/yearConstants";
 

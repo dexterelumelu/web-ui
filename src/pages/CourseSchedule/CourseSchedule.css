@@ -84,7 +84,7 @@ html, body {
   float: left;
 }
 
-.navbar-container li a{
+.navbar-container li {
   display: block;
   color: white;
   text-align: center;

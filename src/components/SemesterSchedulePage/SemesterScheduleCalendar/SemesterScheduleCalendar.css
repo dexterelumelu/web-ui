@@ -31,7 +31,6 @@
   grid-template-rows: 3vh 97vh;
   grid-template-areas: 'headerRow'
                         'contentRow';
-  
 }
 
 
@@ -53,7 +52,7 @@
 
 .calendar-body{
   border: 1px solid black;
-  zoom: 60%;
+  zoom: 120%;
   border-radius: 1pt solid green;
   grid-area: contentRow;
   background-color: slategrey;
@@ -63,7 +62,7 @@
 .weekday-content{
   display: grid;
   grid-template-columns: 1fr repeat(6, 3fr);
-  grid-template-rows: repeat(181, 1fr);
+  grid-template-rows: repeat(181, 0.54vh);
   overflow-y: scroll;
 }
 
