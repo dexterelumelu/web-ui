@@ -109,6 +109,16 @@
   cursor: pointer;
 }
 
+.course-button-group{
+  display: block;
+  width: 100%;
+}
+
+.section-button-group{
+  display: block;
+  width: 100%;
+}
+
 .course-button {
   background-color: darkred;
   border: 1px solid black;
@@ -117,6 +127,20 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  width: 100%;
+  /*font-size: 16px;*/
+  margin: 1px 1px;
+  cursor: pointer;
+  z-index: 5;
+}
+.course-button-hide {
+  background-color: darkred;
+  border: 1px solid black;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  display: none;
+  text-align: left;
   width: 100%;
   /*font-size: 16px;*/
   margin: 1px 1px;
@@ -138,3 +162,18 @@
   margin: 1px 1px;
   cursor: pointer;
 }
+.section-button-info {
+  background-color: darkred;
+  border: 1px solid black;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: left;
+  width: 100%;
+  /*font-size: 16px;*/
+  margin: 1px 1px;
+  cursor: pointer;
+  z-index: 5;
+}
+

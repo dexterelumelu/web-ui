@@ -7,10 +7,11 @@ import IconButton from '@mui/material/IconButton';
 import crnData from 'services/data/springCRN.json';
 
 import './Drawer.css'
+//import DrawerButton from './DrawerButton';
+
 
 function Drawer({ callbackRemoveSection, classScheduleList }) {
   // const drawerList = {...classScheduleList}
-
 
 
   const closeDrawer = () => {
@@ -35,12 +36,23 @@ function Drawer({ callbackRemoveSection, classScheduleList }) {
             return(<></>)
           }
           return(
-            <ListItemButton color='black' >
-              {crnData[crn]['title']} {crnData[crn]['subject']} {crnData[crn]['number']}  .
-              <button onClick={() => {updateList(crn)}}>
-                &times;
-              </button>
-            </ListItemButton>
+            <>
+              <div className='drawer-button-container' >
+                <div className='course-key'>
+                  {crnData[crn]['subject']} {crnData[crn]['number']}
+                </div>
+
+                <div className='course-name'>
+                  {crnData[crn]['title']}
+                </div>
+
+                <div className='button-exit'>
+                  <button onClick={() => {updateList(crn)}}>
+                    &times;
+                  </button>
+                </div>
+              </div>
+            </>
           )}
         )
         }
@@ -49,4 +61,4 @@ function Drawer({ callbackRemoveSection, classScheduleList }) {
   )
 }
 
-export default Drawer
+export default Drawer;

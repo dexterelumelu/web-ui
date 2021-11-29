@@ -68,37 +68,21 @@ html, body {
 }
 
 .navbar-container{
-  grid-area: heading;
   grid-column: 1/-1;
   grid-row: 1;
-}
-
-.navbar-container ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
   background-color: black;
+  height: 100%;
 }
 
-.navbar-container li{
-  float: left;
-}
-
-.navbar-container li {
-  display: block;
-  color: white;
-  text-align: center;
-  /*padding: 14px 16px;*/
-  text-decoration: none;
-}
-
-.navbar-container a:hover:not(.active) {
-  background-color: pink;
-}
-
-.navbar-container .active {
+.navbar-container button{
   background-color: darkred;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
 }
 
 .sidebar-container {

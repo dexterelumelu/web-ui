@@ -6,7 +6,7 @@ import SemesterSideBar from 'components/SemesterSchedulePage/SemesterSideBar/Sem
 import SemesterScheduleCalendar from 'components/SemesterSchedulePage/SemesterScheduleCalendar/SemesterScheduleCalendar.js';
 import Drawer from 'components/Drawer/Drawer';
 
-
+import crnData from 'services/data/springCRN.json';
 
 
 function CourseSchedule() {
@@ -14,7 +14,17 @@ function CourseSchedule() {
   const [hoverSection, setHoverSection] = useState(0);
   const [lastSectionAdded, setLastSectionAdded] = useState(0);
   const [classScheduleList, setClassScheduleList] = useState([])
-  
+  const [creditsCount, setCreditsCount] = useState(0)
+
+  const countCredits = () => {
+    classScheduleList.forEach(crn => {
+      if (crnData[crn]['credits'] !== undefined){
+        const numCredits = crnData[crn]['credits']
+        setCreditsCount(Number(numCredits) + creditsCount)
+      }
+    })
+  }
+
   const openDrawer = () => {
     document.getElementById('drawer-container').style.width='30%'
   }
@@ -24,6 +34,9 @@ function CourseSchedule() {
   }
 
   const callbackAddSection = (crn) => {
+    /*classScheduleList.forEach(scheduleCRN => {
+      const existingTimes = []
+    });*/
     setLastSectionAdded(crn)
     if (!classScheduleList.includes(crn)){
       setClassScheduleList(prevItems => [...prevItems, crn])
@@ -54,9 +67,7 @@ function CourseSchedule() {
         </div>
         <div className='semester-schedule-container'>
           <div className='navbar-container'>
-            <ul>
-              <li><a class="active" href="#HOME">SPRING 2022 PLANNER</a></li>
-            </ul>
+            <button>HOME</button>
           </div>
           <div className='sidebar-container'>
             <SemesterSideBar callbackHoverSection={callbackHoverSection} callbackAddSection={callbackAddSection} />

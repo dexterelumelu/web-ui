@@ -2,24 +2,13 @@ import React from 'react';
 
 import './SemesterSideBar.css'
 
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Divider from '@mui/material/Divider';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import Tabs from '@mui/material/Tabs';
-import TabPanel from '@mui/lab/TabPanel';
-import ListItem from '@mui/material/ListItem';
+
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import RestartAltIcon from '@mui/icons-material/RestartAlt'
 
 //import scheduleData from 'services/data/fallSchedule.json';
 import scheduleData from 'services/data/springSchedule.json';
-import crnData from 'services/data/fallSchedule.json';
-import { AppBar } from '@mui/material';
+import descriptionData from 'services/data/courseDescriptions.json';
+import crnData from 'services/data/springCRN.json';
 
 
 const addedSections = new Set()
@@ -66,14 +55,41 @@ function SemesterSideBar({ callbackHoverSection, callbackAddSection }) {
     setPageRank(1)
   }
 
+  const displayDescription = (id) => {
+    document.getElementById(id).style.display = 'inline-block'
+  }
+
+  const collapseDescription = (id) => {
+    document.getElementById(id).style.display = 'none'
+  }
+
 
   const listSubjects = courseList.map((subject) => {
     return(<ListItemButton onClick={() => {onSelectSubject(subject)}}><button className='subject-button'>{subject}</button></ListItemButton>)
   })
   
   const listCourses = classList.map((course, index) => {
-    console.log('classlist', selectedSubject)
-    return(<ListItemButton onClick={() => {onSelectCourse(course)}}><button className='course-button'>{course} {subjectList[selectedSubject][course][0]['title']}</button></ListItemButton>)
+    return(
+      <>
+        <ListItemButton 
+          onClick={() => {onSelectCourse(course)}}
+          onMouseEnter={() => {displayDescription(subjectList[selectedSubject][course][0]['title'])}}
+          onMouseLeave={() => {collapseDescription(subjectList[selectedSubject][course][0]['title'])}}
+        >
+          <div className='course-button-group'>
+            <button 
+              className='course-button'
+            >
+              {course} {subjectList[selectedSubject][course][0]['title']}
+            </button>
+            <button className='course-button-hide' id={subjectList[selectedSubject][course][0]['title']}>
+              {descriptionData[selectedSubject][course]}
+            </button>
+          </div>
+        </ListItemButton>
+
+      </>
+      )
   })
 
   const listSections = (classObject) => {
@@ -82,20 +98,34 @@ function SemesterSideBar({ callbackHoverSection, callbackAddSection }) {
         {classObject.map((section, index) => (
           <div className='section-list-item'>
           <ListItemButton>
-            <button className='section-button'
-              onClick={() => {
-                callbackHoverSection(0)
-                callbackAddSection(section.crn)
-                onSelectSection(section)
-              }}
-              onMouseEnter={() => {
-                callbackHoverSection(0)
-                callbackHoverSection(section.crn)
-              }}
-              onMouseLeave={() => {callbackHoverSection(0)}}
-            >
-            {section.crn}  {section.title}
-            </button>
+            <div className='section-button-group'>
+              <button className='section-button'
+                onClick={() => {
+                  callbackHoverSection(0)
+                  callbackAddSection(section.crn)
+                  onSelectSection(section)
+                }}
+                onMouseEnter={() => {
+                  callbackHoverSection(0)
+                  callbackHoverSection(section.crn)
+                }}
+                onMouseLeave={() => {callbackHoverSection(0)}}
+              >
+              {section.crn}  {section.title}
+              </button>
+              <button className='section-button-info'>
+                Credits: {section.credits} <br/>
+                Days: {crnData[section.crn]['days'].map((eachDay) => (
+                  <pre>      {eachDay}<br/></pre>
+                ))}
+                Times:<br/>{crnData[section.crn]['times'].map((eachTime) => (
+                  <>
+                    <pre>      {eachTime}<br/></pre>
+                  </>
+                ))}
+                Instructor: {crnData[section.crn]['instructor']}
+              </button>
+            </div>
             </ListItemButton>
           </div>           
         ))
@@ -128,7 +158,6 @@ function SemesterSideBar({ callbackHoverSection, callbackAddSection }) {
         <> {listSections(courseObject)} </>
       )
     }else{
-      console.log('pr', pageRank)
       return (
         <> OMO NA ERROR O </>
       )
@@ -149,7 +178,6 @@ function SemesterSideBar({ callbackHoverSection, callbackAddSection }) {
 
   const handlePageChange = (event, newValue) => {
     setPageRank(newValue)
-    console.log('newValue: ', pageRank)
   }
 
   return(
